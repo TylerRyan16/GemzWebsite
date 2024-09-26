@@ -1,21 +1,27 @@
+body, h1, h2, h3, ul, li {
+    font-family: "Bebas Neue", sans-serif;
+}
+
 body{
-    background-color:#87ceeb;
+    background-color:black;
 }
 
 /* NAV BAR */
-#top_nav_bar{
+#top_nav_bar {
     display: flex;
-    align-items: center; /* Vertically centers the content */
+    align-items: center;
     justify-content: space-between;
     height: 8%;
     width: 100%;
     position: fixed;
-    top: 0;
-    bottom: 0;
     left: 0;
+    top: 0;
     z-index: 1;
-    background-color:cornflowerblue;
+    background-color: #4682B4;
+    opacity: 1;  /* Set initial opacity */
+    transition: opacity 0.5s ease; /* Ensure smooth transition */
 }
+
 
 /* TOP LEFT LOGO */
 #top-left-logo h2{
@@ -78,18 +84,6 @@ body{
     z-index: 0;
 }
 
-#main-area h1{
-    color: tomato;
-    font-size: 44px;
-    font-weight: 600;
-}
-
-#main-area p{
-    font-size: 22px;
-    color: white;
-    font-weight: 200;
-}
-
 /* TITLE SLIDE */
 #title-slide{
     width: 100%;
@@ -110,13 +104,69 @@ body{
 }
 
 /* INTRO SLIDE */
-#introduction{
-    width: 100%;
-    height: 100%;
-    background-color: #87ceeb;
+#introduction-slide{
+    width: 90%;
+    height: 90%;
+    background-color: black;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease; /* Smooth fade-in transition for both opacity and background color */
+    margin: 25px auto;
+    border-radius: 36px;
+    border: lightblue 2px solid;
 }
 
-#overview{
-    text-align: center;
+#introduction-slide.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
 }
+
+#introduction-slide h1{
+    color: white;
+    font-size: 85px;
+    font-weight: bold;
+}
+
+#introduction-slide p{
+    font-size: 30;
+    color: white;
+    font-weight: 100;
+    font-family: 'Roboto';
+}
+
+#introduction{
+    width: 90%;
+    padding-top: 100px;
+    margin-bottom: 100px;
+    padding-left: 100px;
+    
+}
+
+#introduction h1{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+#introduction p{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+#expectations{
+    width: 90%;
+    padding-left: 100px;
+}
+
+#expectations h1{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+#expectations p{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+
+
+
 
