@@ -2,8 +2,13 @@ body, h1, h2, h3, ul, li {
     font-family: "Bebas Neue", sans-serif;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
 body{
-    background-color:black;
+    background-color:#86ceeb;
 }
 
 /* NAV BAR */
@@ -11,15 +16,23 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 8%;
+    height: 8%;  /* Initial height */
     width: 100%;
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 10;  /* Ensure it's on top of content initially */
     background-color: #4682B4;
     opacity: 1;  /* Set initial opacity */
-    transition: opacity 0.5s ease; /* Ensure smooth transition */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transitions */
+    transform: translateY(0);  /* Initial position */
+}
+   
+
+#top_nav_bar.inactive {
+    transform: translateY(-100%);  /* Move it out of view upwards */
+    opacity: 0;  /* Hide the navbar */
+    pointer-events: none;  /* Disable interaction */
 }
 
 
@@ -75,15 +88,27 @@ body{
 
 
 /* MAIN CONTENT */
-#main-area{
+#main-area {
     position: absolute;
-    left: 0%;
-    top: 8%;
+    left: 0;
+    top: 0; /* Start at the top since the navbar is not taking space */
     width: 100%;
     height: 100%;
-    z-index: 0;
+    overflow-y: scroll;  /* Enable scrolling */
+    scroll-snap-type: y mandatory;  /* Enable snap scrolling along the Y-axis */
+    scroll-behavior: smooth; /* Smooth scroll transition */
 }
 
+/* SLIDES STYLES - like introduction, gameplay mechanics, etc. */
+#main-area > div {
+    scroll-snap-align: center;  /* Snap to center */
+    scroll-margin-top: 50px; /* This adds a margin above the element, causing it to snap slightly higher */
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;  /* Make sure each section takes at least the full viewport height */
+    z-index: 1; /* Ensure slides are above the navbar when it vanishes */
+    position: relative;
+}
 /* TITLE SLIDE */
 #title-slide{
     width: 100%;
@@ -92,6 +117,8 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    opacity: 1;  /* Set initial opacity */
+    transition: opacity 0.5s ease; /* Ensure smooth transition */
 }
 
 #title-pic {
@@ -105,14 +132,16 @@ body{
 
 /* INTRO SLIDE */
 #introduction-slide{
-    width: 90%;
+    width: 98%;
     height: 90%;
     background-color: black;
     opacity: 0; /* Initially invisible */
     transition: opacity 1.5s ease, background-color 1.5s ease; /* Smooth fade-in transition for both opacity and background color */
-    margin: 25px auto;
     border-radius: 36px;
     border: lightblue 2px solid;
+    margin-left: 22px;
+    z-index: 5;
+    position: relative;  /* Ensure they stay below the navbar */
 }
 
 #introduction-slide.visible {
@@ -126,6 +155,11 @@ body{
     font-weight: bold;
 }
 
+#introduction-slide h1:hover{
+    color: dodgerblue;
+    cursor: pointer;
+}
+
 #introduction-slide p{
     font-size: 30;
     color: white;
@@ -135,14 +169,13 @@ body{
 
 #introduction{
     width: 90%;
-    padding-top: 100px;
-    margin-bottom: 100px;
-    padding-left: 100px;
-    
+    padding-top: 35px;
+    margin-bottom: 25px;
+    padding-left: 75px;
 }
 
 #introduction h1{
-    margin: 0px 0px;
+    margin: 0px -25px;
     padding: 0px 0px;
 }
 
@@ -153,11 +186,11 @@ body{
 
 #expectations{
     width: 90%;
-    padding-left: 100px;
+    padding-left: 75px;
 }
 
 #expectations h1{
-    margin: 0px 0px;
+    margin: 0px -25px;
     padding: 0px 0px;
 }
 
@@ -166,7 +199,774 @@ body{
     padding: 0px 0px;
 }
 
+#introduction span{
+    color:dodgerblue;
+}
+
+#fyi{
+    margin-left: 25px;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 300px;
+}
+
+/* GAME OVERVIEW */
+#game-overview{
+    background-color: #1B3A4B;
+    width: 98%;
+    height: 90%;
+    margin: 75px auto;
+    border-radius: 32px;
+    margin-bottom: 100px;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+}
+
+#game-overview.visible {
+    opacity: 1; /* Make it visible when scrolled to */
+}
+
+/* overview navbar */
+#overview-list{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding-top: 35px;
+    width: 90%;
+    margin-left: 35px;
+    border-bottom: white 1px solid;
+}
+
+#overview-list li{
+    padding: 10px 20px;
+    font-size: 32px;
+    transition: color 0.3s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+#overview-list h3{
+    color: white;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#overview-list h3:hover{
+    color: dodgerblue;
+    cursor: pointer;
+}
+
+#overview-list h3.active{
+    color: dodgerblue;
+    text-decoration: underline;
+}
+
+/* overview content */
+#overview-content {
+    color: white;
+    margin-top: 50px;
+}
+
+#overview-content ul{
+    list-style-type: none;
+    width: 98%;
+    float: left;
+}
+
+#overview-content img{
+    width: 325px;
+    height: 325px;
+    margin-right: 20px;
+    border-radius: 32px;
+    padding-left: 15px;
+}
+
+#overview-content h3{
+    font-size: 64px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#overview-content h3:hover{
+    color:dodgerblue;
+    cursor: pointer;
+}
+
+#overview-content p{
+    margin-top: 0px;
+    font-size: 32px;
+    font-family: 'Roboto';
+}
+
+.top-div, .bottom-div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 75px;
+}
+
+.item {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.item:last-child{
+    margin-right: 0;
+}
+
+.text-content{
+    display: flex;
+    flex-direction: column;
+}
 
 
+/* gameplay mechanics */
+#gameplay-mechanics{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#gameplay-mechanics.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#gameplay-mechanics ul{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;;
+    margin: 0;
+    list-style: none;
+}
+
+#gameplay-mechanics li{
+    width: 45%;
+    padding-left: 15px;
+}
+
+#gameplay-mechanics h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 33px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#gameplay-mechanics h2{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#gameplay-mechanics img{
+    border-radius: 32px;
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 850px;
+    height: auto;
+}
+
+#gameplay-mechanics p{
+    font-size: 30;
+    color: white;
+    font-weight: 100;
+    font-family: 'Roboto';
+    padding-left: 15px;
+    padding-top: 0px;
+    margin-top: 10px;
+}
+
+/* gameplay mechanics continued */
+#gameplay-mechanics-continued {
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#gameplay-mechanics-continued.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+/* Ensure the layout is consistent with the main gameplay mechanics section */
+#gameplay-mechanics-continued ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#gameplay-mechanics-continued li {
+    width: 45%;
+    padding-left: 15px;
+}
+
+#gameplay-mechanics-continued h1 {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 33px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#gameplay-mechanics-continued h2 {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#gameplay-mechanics-continued img {
+    border-radius: 32px;
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 850px;
+    height: auto;
+}
+
+#gameplay-mechanics-continued p {
+    font-size: 30px;
+    color: white;
+    font-weight: 100;
+    font-family: 'Roboto';
+    padding-left: 15px;
+    padding-top: 0px;
+    margin-top: 10px;
+}
+
+
+/* story & characters */
+#story-and-characters{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#story-and-characters.visible{
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+/* Flex container to hold image and text side by side */
+.story-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#story-and-characters h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 33px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#story-and-characters img{
+    border-radius: 32px;
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 800px; /* Adjust width of the image */
+    height: auto;
+}
+
+
+#story-and-characters ul{
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    color: white;
+    font-size: 32px;
+    padding-top: 30px;
+}
+
+#story-and-characters p{
+    font-size: 30px;
+    color: white;
+    font-weight: 100;
+    font-family: 'Roboto';
+    margin-top: 10px;
+    width: 80%; /* Ensure the text stays next to the image */
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 25px;
+}
+
+#story-and-characters span{
+    color: dodgerblue;
+}
+
+
+/* story characters continued */
+#story-and-characters-continued {
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#story-and-characters-continued.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#story-and-characters-continued h2 {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+#story-and-characters-continued img {
+    border-radius: 32px;
+    width: 55%;
+    height: auto;
+}
+
+#story-and-characters-continued p {
+    font-size: 30px;
+    color: white;
+    font-weight: 100;
+    font-family: 'Roboto';
+    margin-top: 10px;
+    padding-top: 15px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+/* Flex container for the two sections side by side */
+#story-and-characters-continued .story-grid {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#story-and-characters-continued .story-grid-item {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* art style */
+#art-style{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#art-style span{
+    color: dodgerblue;
+}
+
+#art-style.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#art-style h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 15 15;
+}
+
+#art-style h2 {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+#art-style img {
+    border-radius: 32px;
+    width: 55%;
+    height: auto;
+}
+
+#art-style p {
+    font-size: 30px;
+    color: white;
+    font-weight: 100;
+    font-family: 'Roboto';
+    margin-top: 10px;
+    padding-top: 15px;
+    width: 100%;
+    padding-left: 15px;
+}
+
+#image-gallery {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 100px; /* Adds space from the paragraph above */
+}
+
+.image-item {
+    text-align: center; 
+    flex: 1; 
+}
+
+#image-gallery img {
+    width: 600px; 
+    height: 400px;
+    border-radius: 32px; 
+}
+
+.image-item p {
+    margin-top: 10px;
+    font-size: 16px; /* Adjusts text size under images */
+}
+
+/* target audience */
+#target-audience{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#target-audience.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#target-audience h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 15 15;
+}
+
+#you{
+    padding-top: 75px;
+    font-style: italic;
+}
+
+#enthusiasts{
+    padding-top: 50px;
+    font-style: italic;
+}
+
+#target-audience p{
+    font-size: 30;
+    color: white;
+    font-weight: 100;
+    font-family: 'Roboto';
+    padding-left: 15px;
+    padding-top: 0px;
+    margin-top: 10px;
+}
+
+/* timeline */
+#timeline{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+}
+
+#timeline.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#timeline h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 15 15;
+}
+
+.slidecontainer {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Ensures the display text is positioned relative to the slider */
+}
+  
+.slider {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 90%;
+    height: 5px;
+    background: #4682B4; /* Slider bar color */
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .15s ease-in-out;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #f2f2f2; /* Thumb color */
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #f2f2f2;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#timelineDisplay {
+    font-size: 36px;
+    color: white;
+    position: absolute;
+    top: 60px; /* Adjust this based on how far below the slider you want the text */
+    left: 0;  /* Start position, dynamically updated */
+    transition: left 0.0s ease-in-out; /* Smooth transition */
+}
+
+#pitch-time{
+    width: 150px;
+    height: auto;
+    padding-left: 130px;
+    margin-top: 200px;
+}
+
+#interview-time{
+    width: 150px;
+    height: auto;
+    padding-left: 181px;
+    margin-top: 200px;
+}
+
+#proposal-time{
+    width: 150px;
+    height: auto;
+    padding-left: 279px;
+    margin-top: 200px;
+}
+
+#final-game-time{
+    width: 150px;
+    height: auto;
+    padding-left: 738px;
+    margin-top: 200px;
+}
+
+
+
+/*  deliverables */
+#deliverables{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#deliverables.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#deliverables h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+#deliverables ul{
+    list-style-type: none;
+    margin-left: 25px;
+}
+
+#deliverables li{
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+
+#deliverables h2{
+    color: white;
+    font-size: 52px;
+    font-weight: bold;
+    margin-left: 65px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.incomplete-checkbox{
+    width: 50px;
+    height: 50px;
+    border: dodgerblue 4px solid;
+    border-radius: 8px;
+}
+
+.complete-checkbox{
+    width: 50px;
+    height: 50px;
+    border: dodgerblue 4px solid;
+    border-radius: 8px;
+    background-color: dodgerblue;
+}
+
+/* accessibility */
+#accessibility{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#accessibility.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#accessibility h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 15 15;
+}
+
+#accessibility ul{
+    list-style-type: none;
+    margin-left: 25px;
+}
+
+#accessibility li{
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+#accessibility h2 {
+    color: white;
+    font-size: 52px;
+    font-weight: bold;
+    margin-left: 65px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+/* conclusion */
+#conclusion{
+    width: 98%;
+    height: 90%;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1.5s ease, background-color 1.5s ease;
+    border-radius: 36px;
+    border: lightblue 2px solid;
+    margin-left: 22px;
+    margin-bottom: 100px;
+}
+
+#conclusion.visible {
+    opacity: 1; /* Visible when scrolled to */
+    background-color: #1B3A4B;
+}
+
+#conclusion h1{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 15 15;
+}
+
+#image-display-area-conclusion {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Align items horizontally to the center */
+    align-items: center; /* Vertically align items */
+    gap: 20px; /* Add space between the images */
+    padding-top: 20px;
+}
+
+#image-display-area-conclusion img {
+    width: 700px;
+    height: auto;
+    padding: 0 0;
+    margin: 0 0;
+}
+
+#conclusion h2 {
+    color: white;
+    font-size: 64px;
+    font-weight: bold;
+    margin-left: 25px;
+    margin-top: 100px;
+    margin-bottom: 0px;
+}
+
+#image-display-area-conclusion img.happy {
+    width: 400px;
+    height: auto;
+    padding-bottom: 75px;
+}
 
 

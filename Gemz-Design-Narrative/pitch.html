@@ -6,8 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./static/style.css">
     <script src="./scripts/script.js"></script>
+    <link rel="stylesheet" href="./static/style.css">
     <title>Document</title>
 </head>
 
@@ -51,9 +51,7 @@
                 </a>
             </li>
         </ul>
-
     </div>
-
 
     <div id="main-area">
 
@@ -67,58 +65,309 @@
             <div id="introduction">
                 <h1>Introduction</h1>
                 <p>
-                    Hello, my name is <span>Tyler Ryan</span>
+                    Hello, my name is <span>Tyler Ryan</span>. I am a senior DNID major with a heavy focus on Game
+                    Design.
+                    The project I am showcasing today is <span>Gemz</span>.
+                    Gemz is a factory-simulation game set in the far-future in an interplanetary environment. Players
+                    mine and refine gems
+                    on various planets while managing factory layouts and trading with alien factions to build a
+                    thriving econonomy.
+                    <br>
+                    <br>
+                    Gemz combines resource management, strategy, and exploration, where players expand factories,
+                    automate processes,
+                    and engage in ethical dilemmas related to resource exploitation.
+                    <br>
+                    <br>
+                    In Gemz, players experience mechanics inspired by games like Factorio and Shapez 2, focusing on
+                    automation and
+                    resource management while balancing planetary exploitation with economic growth.
+                    <br>
+                    <br>
+                    <span>Genre: </span> Strategy, Simulation
+                    <br>
+                    <span>Engine: </span> Unity3D
                 </p>
             </div>
 
-            <div id="expectations">
-                <h1>What to expect</h1>
-                <p>Expectations for my game are Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam,
-                    laborum
-                    voluptate fuga aperiam sed enim maiores facilis repellendus, magni ab consequuntur modi dolor
-                    eveniet
-                    assumenda veniam ipsam sit, rem repudiandae.</p>
-            </div>
+            <p id="fyi">FYI: Most headers on this page can be clicked on for easier navigation.</p>
+
         </div>
 
         <!-- game overview -->
         <div id="game-overview">
-
+            <ul id="overview-list">
+                <li>
+                    <h3 class="active">Gameplay Mechanics</h3>
+                </li>
+                <li>
+                    <h3>Story & Characters</h3>
+                </li>
+                <li>
+                    <h3>Art</h3>
+                </li>
+                <li>
+                    <h3>Demographic</h3>
+                </li>
+                <li>
+                    <h3>Timeline</h3>
+                </li>
+                <li>
+                    <h3>Deliverables</h3>
+                </li>
+            </ul>
+            <div id="overview-content">
+                <!-- this is empty here, but is changed dynamically in script.js -->
+            </div>
         </div>
-
 
         <!-- Gameplay Mechanics -->
         <div id="gameplay-mechanics">
+            <h1 id="movement-tag">Gameplay Mechanics</h1>
+            <ul>
+                <li>
+                    <img src="videos/movement.gif" alt="movement and placement gif">
+                    <h2>Movement</h2>
+                    <p>The player controls a flight-enabled camera that can maneuver freely in all directions—forward,
+                        backward, left, right, up, and down. The movement system provides full 3D control, giving
+                        players
+                        the ability to explore the environment from any angle. Players can adjust the camera speed by
+                        scrolling
+                        the mouse wheel, allowing for fine-tuned control when navigating close spaces or zooming out for
+                        a
+                        broader view of their expanding factory. Speed can range between 5 and 50 units, depending on
+                        the
+                        player's preference, enabling both slow and precise movements, or fast traversal over large
+                        areas.
+                    </p>
+                </li>
+                <li>
+                    <img src="videos/placement.gif" alt="tile placement gif">
+                    <h2>Tile Placement</h2>
+                    <p>Gemz operates on a tile-based grid system for factory construction and resource management.
+                        Players
+                        place tiles to build conveyor belts, mining stations, and other essential components of their
+                        factory.
+                        Each tile must align with the grid, ensuring a structured and organized layout. The snapping
+                        system
+                        allows for seamless placement, avoiding errors in positioning. Additionally, certain buildings
+                        or
+                        machines can only be placed after unlocking technologies, adding a layer of strategy to the
+                        construction
+                        process as players must balance resources and available space effectively.
+                    </p>
+                </li>
+            </ul>
+        </div>
 
+        <!-- Gameplay Mechanics Continued -->
+        <div id="gameplay-mechanics-continued">
+            <h1 id="expand-trade-tag">Gameplay Mechanics Continued</h1>
+            <ul>
+                <li>
+                    <img src="videos/trade-economy.gif" alt="trade and economy gif">
+                    <h2>Trade & Economy</h2>
+                    <p>The trade and economy system is key to success in Gemz. Players establish trade routes with alien
+                        factions across planets, negotiating resource deals. Prices fluctuate based on scarcity, supply,
+                        and demand, requiring strategic planning to profit from market trends and avoid financial loss.
+                        Strong faction relationships unlock rare materials and technologies, enhancing factory
+                        production. Profits can be reinvested to expand factories or upgrade machinery for increased
+                        efficiency.
+                    </p>
+                </li>
+                <li>
+                    <img src="images/resource-management.png" alt="resource management gif">
+                    <h2>Resource Management</h2>
+                    <p>Players must manage the resources they mine and refine, while confronting ethical dilemmas tied
+                        to resource exploitation. Extracting gems from planets involves refining and transportation
+                        costs, with market fluctuations impacting profits. Over-mining risks depleting resources,
+                        destabilizing ecosystems and alien factions.
+                        <br>Players must choose between short-term gains or
+                        sustainable methods, with their decisions affecting relationships with alien species and the
+                        long-term stability of their interplanetary empire.
+                    </p>
+                </li>
+            </ul>
         </div>
 
 
         <!-- Story & Characters -->
         <div id="story-and-characters">
+            <h1>Story and Setting</h1>
+
+            <div class="story-container">
+                <div>
+                    <img src="images/setting.png" alt="purple planet with lush landscape">
+                </div>
+                <div>
+                    <ul>
+                        <li><span>Current Planet</span>: Elyssia</li>
+                        <li><span>Year</span>: 3127</li>
+                    </ul>
+                    <p>Long ago, as Earth faced environmental collapse and dwindling resources, humanity embarked on a
+                        bold mission to secure its survival. Led by the LEAP Foundation (League of Earth's Advancement
+                        and Progress), they sought not just to escape Earth but to find a new world where humanity could
+                        rebuild. After years of searching the stars, they finally discovered Astralis Prime, a vibrant
+                        planet offering hope and a future for the human race.
+                        <br><br>
+                        Astralis Prime became humanity’s heart of expansion, but it wasn’t the only world they found.
+                        During their journey, LEAP discovered Elyssia, a lush, resource-rich planet. With untouched
+                        forests and valuable minerals, it quickly became key to humanity’s plans for survival and growth
+                        in the galaxy.
+                        <br><br>
+                        However, settling Elyssia came with challenges. The planet’s wealth attracted alien
+                        civilizations like the Neblitarians and Va'Kara, leading to complex diplomatic relationships.
+                        Humanity now faces a struggle for control over Elyssia's resources, navigating between
+                        cooperation and conflict with these factions.
+                    </p>
+                </div>
+            </div>
 
         </div>
 
 
+        <!-- Story & Characters -->
+        <div id="story-and-characters-continued" class="visible">
+            <div class="story-grid">
+
+                <!-- Conflict Section -->
+                <div class="story-grid-item">
+                    <h2 id="conflict">Conflict</h2>
+                    <img src="images/conflict.png" alt="empty barren purple planet">
+                    <p>The race to control Elyssia’s resources has led to fierce competition and environmental
+                        degradation, forcing players to choose between exploiting the planet’s wealth or preserving its
+                        fragile ecosystem. Their decisions will shape the fate of the planet and their relationships
+                        with other factions.</p>
+
+
+                </div>
+
+                <!-- Factions Section -->
+                <div class="story-grid-item">
+                    <h2 id="factions">Factions</h2>
+                    <img src="images/factions.png" alt="alien factions gathered together">
+                    <p>Interacting with Elyssia’s alien factions can lead to a range of outcomes, from forming alliances
+                        that boost your resource collection and technology, to sparking conflicts that can destabilize
+                        the planet’s economy.
+                        <br>Players must navigate these relationships carefully, balancing their own
+                        growth with the needs and ambitions of competing factions.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
         <!-- art -->
         <div id="art-style">
+            <h1>Art</h1>
+            <p>The art style in Gemz features a medium-to-low poly aesthetic, blending elements of realism with a
+                cartoonish, futuristic twist. Every asset is handcrafted in <span>Blender</span>, maintaining a clean,
+                geometric look
+                that represents reality while offering a unique and playful visual style. The colors and shapes evoke a
+                futuristic world without overwhelming detail, giving the game a distinctive charm that is both
+                approachable and imaginative. </p>
 
+            <div id="image-gallery">
+                <div class="image-item">
+                    <img src="images/art-example1.png" alt="Conveyer Belt Model">
+                    <p>Conveyer Belt Model</p>
+                </div>
+                <div class="image-item">
+                    <img src="images/art-example2.png" alt="Raw Ore Model">
+                    <p>Raw Ore Model</p>
+                </div>
+                <div class="image-item">
+                    <img src="videos/art-example3.gif" alt="Various Gems Models">
+                    <p>Various Gems Models</p>
+                </div>
+            </div>
         </div>
 
 
         <!-- Target Audience -->
         <div id="target-audience">
+            <h1>Target Audience</h1>
+            <h1 id="you">YOU.</h1>
+            <p>
+                If you're someone who cares about climate change, resource exploitation, and the depletion of Earth's
+                natural
+                resources, then *Gemz is a game that will resonate deeply with you. It tackles these pressing global
+                issues through
+                engaging gameplay, forcing players to balance the desire for economic growth with the importance of
+                preserving the
+                environment. The game's message encourages thoughtful decision-making, illustrating the impact of
+                exploitation
+                and resource management on both planets and their ecosystems.
+            </p>
+            <br><br>
+            <h1 id="enthusiasts">ENTHUSIASTS.</h1>
+            <p>
+               Gemstone enthusiasts are offered an exciting world where they can mine, refine, and trade precious
+                gems, with
+                unique mechanics designed to bring out the allure of these resources. Additionally, fans of factory
+                simulation and
+                strategy games will find deep satisfaction in the game's complex systems of automation, where
+                efficiency, growth,
+                and sustainability are key to building a thriving interplanetary empire.
+            </p>
+
 
         </div>
 
         <!-- Timeline -->
         <div id="timeline">
-
+            <h1>Timeline</h1>
+            <img src="images/10-7-2024.png" id="pitch-time" alt="">
+            <img src="images/10-17-2024.png" id="interview-time" alt="">
+            <img src="images/10-28-2024.png" id="proposal-time" alt="">
+            <img src="images/final.png" id="final-game-time" alt="">
+            <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="0" class="slider" id="timelineSlider">
+                <div id="timelineDisplay">Present Pitch</div>
+              </div>
         </div>
 
 
         <!-- Deliverables -->
         <div id="deliverables">
+            <h1>Deliverables</h1>
+            <ul>
+                <li><div class="complete-checkbox"></div><h2>4 Gem Types</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>3 Mining Objects</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>Working Economy System</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>Technology Perk Tree</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>One Level</h2></li>
+            </ul>
+        </div>
 
+        
+        <!-- Accessibility -->
+        <div id="accessibility">
+            <h1>Accessibility</h1>
+            <ul>
+                <li><div class="incomplete-checkbox"></div><h2>Colorblind Mode</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>Subtitles</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>Customizable Controls</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>Tutorial & Hints</h2></li>
+                <li><div class="incomplete-checkbox"></div><h2>Menu Narration Options</h2></li>
+            </ul>
+        </div>
+
+
+        <!-- Conclusion -->
+        <div id="conclusion">
+            <h1>FIN</h1> 
+            <div id="image-display-area-conclusion">
+                <img src="images/smiles.png" alt="happy face" class="happy">
+                <img src="images/conclusion-title.png" alt="gemz title">
+                <img src="images/smiles.png" alt="happy face" class="happy">
+            </div>
+            <h2>Any Questions?</h2>
         </div>
 
         <br>
